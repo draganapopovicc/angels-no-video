@@ -1,0 +1,41 @@
+/* poppins-regular - latin */
+@font-face {
+   font-family: "Poppins";
+   font-style: normal;
+   font-display: swap;
+   font-weight: 400;
+   src: local(""), url("../assets/fonts/poppins-v20-latin-regular.woff2") format("woff2"), url("../assets/fonts/poppins-v20-latin-regular.ttf") format("truetype");
+}
+/* poppins-500 - latin */
+@font-face {
+   font-family: "Poppins";
+   font-style: normal;
+   font-display: swap;
+   font-weight: 500;
+   src: local(""), url("../assets/fonts/poppins-v20-latin-500.woff2") format("woff2"), url("../assets/fonts/poppins-v20-latin-500.ttf") format("truetype");
+}
+/* poppins-600 - latin */
+@font-face {
+   font-family: "Poppins";
+   font-style: normal;
+   font-display: swap;
+   font-weight: 600;
+   src: local(""), url("../assets/fonts/poppins-v20-latin-600.woff2") format("woff2"), url("../assets/fonts/poppins-v20-latin-600.ttf") format("truetype");
+}
+/* poppins-700 - latin */
+@font-face {
+   font-family: "Poppins";
+   font-style: normal;
+   font-display: swap;
+   font-weight: 700;
+   src: local(""), url("../assets/fonts/poppins-v20-latin-700.woff2") format("woff2"), url("../assets/fonts/poppins-v20-latin-700.ttf") format("truetype");
+}
+
+/* lato-700 - latin */
+@font-face {
+   font-family: "Lato";
+   font-style: normal;
+   font-display: swap;
+   font-weight: 700;
+   src: local(""), url("../assets/fonts/lato-v23-latin-700.woff2") format("woff2"), url("../assets/fonts/lato-v23-latin-700.ttf") format("truetype");
+}

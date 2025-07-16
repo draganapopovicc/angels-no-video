@@ -1,0 +1,404 @@
+@use "../shared" as *;
+
+.header {
+   position: relative;
+   position: sticky;
+   z-index: 999;
+   top: 0;
+   transition: $transition;
+
+   &.sticky-header {
+      @include limbo-max {
+         transform: translateY(-37px);
+
+         .header__logo {
+            flex: 0 0 3rem;
+         }
+
+         .nav.active {
+            height: calc(100svh - 60px);
+         }
+      }
+
+      @include desk-min {
+         transform: translateY(-35px);
+
+         .header__logo {
+            flex: 0 0 3rem;
+         }
+
+         .nav__list {
+            justify-content: center;
+         }
+      }
+   }
+
+   .wrapper {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      justify-content: space-between;
+   }
+
+   //Top
+   &__top {
+      background: $gold-lighten;
+      background: $white;
+      padding: 7px 0;
+
+      .wrapper {
+         @include tab-max {
+            gap: 10px;
+            align-items: flex-start;
+         }
+      }
+
+      a {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         transition: $transition;
+         font-size: 16px;
+         color: $primary-color;
+
+         &:hover {
+            color: $gold;
+         }
+      }
+
+      &--desktop {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+         flex: 1;
+         justify-content: space-between;
+
+         @include tab-max {
+            max-height: 0;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: $transition;
+            flex-direction: column;
+
+            .header__info,
+            .header__buttons {
+               flex-direction: column;
+               gap: 12px;
+
+               .divider {
+                  display: none;
+               }
+            }
+         }
+
+         &.active {
+            height: auto;
+            max-height: 500px;
+            opacity: 1;
+            visibility: visible;
+            flex-direction: column;
+         }
+      }
+   }
+
+   &__arrow {
+      cursor: pointer;
+      @include limbo-min {
+         display: none;
+      }
+
+      svg {
+         transition: $transition;
+         color: $primary-color;
+      }
+
+      &.active {
+         svg {
+            transform: rotate3d(1, 0, 0, 180deg);
+         }
+      }
+   }
+
+   &__info {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+   }
+
+   &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+   }
+
+   //Bottom
+
+   &__bottom {
+      background: $primary-color;
+      padding: 10px 0;
+   }
+
+   &__logo {
+      flex: 0 0 4rem;
+      transition: $transition;
+
+      @include limbo-min {
+         flex: 0 0 5rem;
+      }
+
+      @include desk-min {
+         flex: 0 0 6rem;
+      }
+   }
+
+   &__menu {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-left: auto;
+      cursor: pointer;
+
+      @include desk-min {
+         display: none;
+      }
+
+      &.active {
+         span {
+            background: transparent;
+
+            &::before {
+               transform: rotate(45deg) translate(0, 0px);
+               height: 3px;
+            }
+
+            &::after {
+               transform: rotate(-45deg) translate(0, 0);
+               height: 3px;
+            }
+         }
+      }
+
+      span {
+         width: 27px;
+         height: 3px;
+         background: $white;
+         display: inline-block;
+         position: relative;
+         transition: width 0.3s;
+
+         &::before,
+         &::after {
+            content: "";
+            width: 27px;
+            height: 3px;
+            background: $white;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: background-color 0.5s, transform 0.5s;
+            transform: rotate(0) translate(0, 7.5px);
+         }
+
+         &::after {
+            left: 0;
+            top: 0;
+            transition: background-color 0.5s, transform 0.5s;
+            transform: rotate(0) translate(0, -7.5px);
+         }
+      }
+   }
+}
+
+.nav {
+   flex: 1;
+   //mobile starts
+
+   @include limbo-max {
+      max-height: 0;
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      position: absolute;
+      top: 100%;
+      background: $primary-color;
+      left: 0;
+      right: 0;
+      padding: 0 20px;
+      transition: max-height 0.4s ease-out, opacity 0.9s ease-out, visibility 0.4s ease-out, height 0.4s ease-out;
+
+      &::-webkit-scrollbar {
+         display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      > ul {
+         padding: 20px 0 40px;
+
+         > li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            &.active {
+               svg {
+                  transform: rotate3d(1, 0, 0, 180deg);
+               }
+
+               .sub-menu {
+                  max-height: 1000px;
+                  visibility: visible;
+                  height: auto;
+               }
+            }
+
+            > a {
+               position: relative;
+               display: flex;
+               align-items: center;
+               gap: 10px;
+
+               &:before {
+                  content: "";
+                  width: 10px;
+                  height: 2px;
+                  background: $gold-lighten;
+               }
+            }
+
+            a {
+               font-weight: 700;
+               font-size: 18px;
+               padding: 15px 0;
+               flex: 0 0 90%;
+               color: $white;
+
+               &::after {
+                  bottom: 5px;
+               }
+            }
+
+            .sub-menu {
+               width: 100%;
+               max-height: 0;
+               height: 0;
+               transition: $transition;
+               visibility: hidden;
+               overflow: hidden;
+               padding-left: 30px;
+            }
+
+            svg {
+               transition: $transition;
+               flex: 0 1 10%;
+               height: 30px;
+               color: $white;
+               cursor: pointer;
+            }
+         }
+      }
+
+      &.active {
+         max-height: 1000px;
+         visibility: visible;
+         z-index: 10;
+         height: calc(100svh - 118px);
+         overflow: auto;
+
+         > ul {
+            opacity: 1;
+            transition: $transition;
+         }
+      }
+   }
+   //mobile ends
+
+   @include desk-min {
+      > ul {
+         display: flex;
+         justify-content: flex-end;
+
+         > li {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            svg {
+               color: $white;
+               pointer-events: none;
+               position: relative;
+               top: -1px;
+               transition: $transition;
+            }
+
+            a {
+               font-size: 16px;
+               font-weight: 600;
+               color: $white;
+               padding: 10px;
+               letter-spacing: 0.3px;
+               transition: $transition;
+            }
+
+            &:hover {
+               .sub-menu {
+                  opacity: 1;
+                  visibility: visible;
+               }
+
+               > a {
+                  color: $gold;
+               }
+
+               svg {
+                  transform: rotate3d(1, 0, 0, 180deg);
+                  color: $gold;
+               }
+            }
+         }
+      }
+
+      //Submennu
+      ul.sub-menu {
+         position: absolute;
+         z-index: 99;
+         min-width: 170px;
+         width: fit-content;
+         background: $white;
+         overflow: hidden;
+         opacity: 0;
+         visibility: hidden;
+         transition: $transition;
+         top: 100%;
+         right: 0;
+         box-shadow: 0 5px 22px 0px rgba(0, 0, 0, 0.27);
+
+         li {
+            position: relative;
+
+            &:not(:last-child) {
+               border-bottom: 1px solid $primary-color;
+            }
+
+            &:hover {
+               a {
+                  transform: translateX(5px);
+               }
+            }
+
+            a {
+               white-space: nowrap;
+               padding: 15px;
+               font-size: 15px;
+               color: $primary-color;
+            }
+         }
+      }
+   }
+}

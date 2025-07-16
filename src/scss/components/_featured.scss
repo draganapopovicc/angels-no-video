@@ -1,0 +1,42 @@
+@use "../shared" as *;
+
+.featured {
+   background: $secondary-color;
+
+   &__all {
+      display: grid;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+
+      @media (min-width: 634.5px) {
+         grid-template-columns: 1fr 1fr;
+         gap: 20px;
+      }
+   }
+
+   &__single {
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__desc {
+      padding: 20px;
+      padding-bottom: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      p {
+         font-size: 18px;
+         line-height: 1.3;
+         flex: 1;
+      }
+
+      .b-btn {
+         margin-top: 30px;
+      }
+   }
+}

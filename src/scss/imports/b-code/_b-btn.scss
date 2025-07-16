@@ -1,0 +1,74 @@
+@use "../../shared" as *;
+
+.b-btns {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 30px;
+
+   @include tab-min {
+      flex-direction: row;
+   }
+}
+
+.b-btn {
+   font-size: 16px;
+   font-weight: 600;
+   padding: 13px 20px;
+   display: flex;
+   align-items: center;
+   gap: 7px;
+   background: $primary-color;
+   color: $white;
+   transition: $transition;
+
+   @include mob-only {
+      justify-content: center;
+      width: 100%;
+   }
+
+   &:hover {
+      color: $primary-color;
+      background: $white;
+   }
+
+   &--transparent {
+      box-shadow: inset 0 0 0 2px $white;
+      background: none;
+   }
+
+   &--transparent-primary {
+      box-shadow: inset 0 0 0 2px $white;
+      background: none;
+   }
+
+   &--transparent-primary {
+      box-shadow: inset 0 0 0 2px $primary-color;
+      background: none;
+      color: $primary-color;
+
+      &:hover {
+         background: $primary-color;
+         color: $white;
+      }
+   }
+
+   &--white {
+      color: $primary-color;
+      background: $white;
+
+      &:hover {
+         background: $primary-color;
+         color: $white;
+      }
+   }
+
+   &--pink {
+      color: $primary-color;
+      background: $secondary-color;
+
+      &:hover {
+         background: $white;
+      }
+   }
+}

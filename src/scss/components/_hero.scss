@@ -1,0 +1,106 @@
+@use "../shared" as *;
+
+.hero {
+   position: relative;
+   overflow: hidden;
+   height: 45vh;
+
+   @include limbo-min {
+      height: 60vh;
+   }
+
+   @include desk-min {
+      height: 70vh;
+   }
+
+   .wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+
+      @include desk-min {
+         justify-content: flex-start;
+      }
+   }
+
+   &__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      // background-image: url("./src/assets/images/home-hero.jpg");
+      background-image: url("../assets/images/home-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(0.6);
+      z-index: 0;
+
+      img {
+         height: auto;
+         max-width: 100%;
+         width: 100%;
+         vertical-align: bottom;
+      }
+   }
+
+   &__content {
+   }
+
+   //Title
+   &__title {
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+   }
+
+   &__prefix {
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+
+      font-size: 14px;
+
+      @include tab-min {
+         font-size: 15px;
+      }
+
+      &:before,
+      &:after {
+         content: "";
+         width: 10px;
+         height: 2px;
+         background: $white;
+      }
+   }
+
+   &__main {
+      font-size: 35px;
+      line-height: 1;
+
+      @include tab-min {
+         font-size: 42px;
+      }
+      @include desk-min {
+         font-size: 60px;
+      }
+   }
+
+   &__description {
+      font-size: 17px;
+      line-height: 1.3;
+
+      @include desk-min {
+         font-size: 19px;
+      }
+   }
+}

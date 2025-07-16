@@ -1,0 +1,28 @@
+@use "../shared" as *;
+
+.video {
+   &__title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   &__container {
+      text-align: center;
+
+      iframe {
+         width: 1000px;
+         max-width: 100%;
+         height: auto;
+         aspect-ratio: 13 / 7.5;
+
+         @include limbo-min {
+            aspect-ratio: 13 / 5.5;
+         }
+      }
+   }
+
+   .b-btns {
+      justify-content: center;
+   }
+}
